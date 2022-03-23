@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public GameObject missile, canon;
     public GameObject explosion;
+    public GameObject deathMessage;
 
     // Start is called before the first frame update
     void Start()
@@ -37,8 +38,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Instantiate(explosion, other.transform.position, other.transform.rotation);
-        Destroy(gameObject);
-        Destroy(other.gameObject);
+        Destroy(this.gameObject);
+        Instantiate(deathMessage);
+        Time.timeScale = 0;
     }
 }
